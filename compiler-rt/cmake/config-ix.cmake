@@ -414,7 +414,8 @@ if(APPLE)
     endif()
   endif()
 
-  if(COMPILER_RT_ENABLE_IOS)
+  if(COMPILER_RT_ENABLE_IOS AND
+       NOT "ios" IN_LIST COMPILER_RT_SANITIZER_EXCLUDED_PLATFORMS)
     list(APPEND DARWIN_EMBEDDED_PLATFORMS ios)
     set(DARWIN_ios_MIN_VER 9.0)
     set(DARWIN_ios_MIN_VER_FLAG -miphoneos-version-min)
@@ -424,7 +425,8 @@ if(APPLE)
     set(DARWIN_iossim_SANITIZER_MIN_VER_FLAG
       ${DARWIN_iossim_MIN_VER_FLAG}=${DARWIN_ios_MIN_VER})
   endif()
-  if(COMPILER_RT_ENABLE_WATCHOS)
+  if(COMPILER_RT_ENABLE_WATCHOS AND
+       NOT "watchos" IN_LIST COMPILER_RT_SANITIZER_EXCLUDED_PLATFORMS)
     list(APPEND DARWIN_EMBEDDED_PLATFORMS watchos)
     set(DARWIN_watchos_MIN_VER 2.0)
     set(DARWIN_watchos_MIN_VER_FLAG -mwatchos-version-min)
@@ -434,7 +436,8 @@ if(APPLE)
     set(DARWIN_watchossim_SANITIZER_MIN_VER_FLAG
       ${DARWIN_watchossim_MIN_VER_FLAG}=${DARWIN_watchos_MIN_VER})
   endif()
-  if(COMPILER_RT_ENABLE_TVOS)
+  if(COMPILER_RT_ENABLE_TVOS AND
+       NOT "tvos" IN_LIST COMPILER_RT_SANITIZER_EXCLUDED_PLATFORMS)
     list(APPEND DARWIN_EMBEDDED_PLATFORMS tvos)
     set(DARWIN_tvos_MIN_VER 9.0)
     set(DARWIN_tvos_MIN_VER_FLAG -mtvos-version-min)
